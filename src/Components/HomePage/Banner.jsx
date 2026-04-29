@@ -17,43 +17,43 @@ const Banner = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-4 w-11/12 mx-auto">
         <div className="p-5 bg-white/10 text-xl font-bold text-white space-y-4 border border-gray-700 shadow ">
           <Image
-            src="/cow1.jpg"
+            src="https://i.ibb.co.com/FkZB96pz/cow1.jpg"
             alt="Cow"
             width={500}
             height={300}
-            className="w-full rounded"
+            className="w-full h-50 rounded"
           ></Image>
-          <p>Australian Cow</p>
+          <p>Shahi Cow</p>
         </div>
         <div className="p-5 bg-white/10 text-xl font-bold text-white space-y-4 border border-gray-700 shadow ">
           <Image
-            src="/cow1.jpg"
+            src="https://i.ibb.co.com/35xMGqGn/images-q-tbn-ANd9-Gc-Tht0-W2ko-u6r9j3-Ccnc6-XW4h43em3-DAGf-W0-Q-s.jpg"
             alt="Cow"
             width={500}
             height={300}
-            className="w-full rounded"
+            className="w-full h-50 rounded"
           ></Image>
-          <p>Bangladeshi Cow</p>
+          <p>Bengal Goat</p>
         </div>
         <div className="p-5 bg-white/10 text-xl font-bold text-white space-y-4 border border-gray-700 shadow ">
           <Image
-            src="/cow1.jpg"
+            src="https://i.ibb.co.com/Cp9qjRM3/images-q-tbn-ANd9-Gc-Rc0-Tx0-KFS3-Tg0288-IGWjymi-Az26w-Ub-Cb-UZt-Q-s.jpg"
             alt="Cow"
             width={500}
             height={300}
-            className="w-full rounded"
+            className="w-full h-50 rounded"
           ></Image>
-          <p>Goat Cow</p>
+          <p>Desi Sheep</p>
         </div>
         <div className="p-5 bg-white/10 text-xl font-bold text-white space-y-4 border border-gray-700 shadow ">
           <Image
-            src="/cow1.jpg"
+            src="https://i.ibb.co.com/QvCSCG0F/images-q-tbn-ANd9-Gc-RMq-QSYEbm-Bo-J4jf3-Mc-VSKV-Hk7kq-FEKMds-Lg-s.jpg"
             alt="Cow"
             width={500}
             height={300}
-            className="w-full rounded"
+            className="w-full h-50 rounded"
           ></Image>
-          <p>Bangladeshi Goat</p>
+          <p>Friesian Cow</p>
         </div>
       </div>
       <div className="flex items-center justify-center">
