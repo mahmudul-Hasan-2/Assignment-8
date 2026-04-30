@@ -12,9 +12,9 @@ const AnimalsCard = ({ animal }) => {
     to: { opacity: 1, transform: "scale(1)" },
   });
   return (
-    <div className="card  bg-base-100 h-full shadow-sm">
-      <figure>
-        <animated.div style={style}>
+    <animated.div style={style}>
+      <div className="card  bg-base-100 h-full shadow-sm">
+        <figure>
           <Image
             src={animal.image}
             alt={animal.name}
@@ -22,39 +22,39 @@ const AnimalsCard = ({ animal }) => {
             height={500}
             className="w-full h-70 p-2"
           />
-        </animated.div>
-      </figure>
-      <div className="card-body ">
-        <h2 className="card-title text-2xl font-bold">{animal.name}</h2>
-        <p>{animal.description}</p>
-        <div className="flex items-center justify-between text-gray-600">
-          <div className="flex items-center gap-1 text-lg font-bold">
-            <span className="">৳</span>
-            <span>{animal.price}</span>
+        </figure>
+        <div className="card-body ">
+          <h2 className="card-title text-2xl font-bold">{animal.name}</h2>
+          <p>{animal.description}</p>
+          <div className="flex items-center justify-between text-gray-600">
+            <div className="flex items-center gap-1 text-lg font-bold">
+              <span className="">৳</span>
+              <span>{animal.price}</span>
+            </div>
+            <div className="flex items-center gap-1 text-lg">
+              <FaLocationDot></FaLocationDot>
+              <span>{animal.location}</span>
+            </div>
           </div>
-          <div className="flex items-center gap-1 text-lg">
-            <FaLocationDot></FaLocationDot>
-            <span>{animal.location}</span>
+          <div className="flex items-center justify-between text-gray-600">
+            <div className="flex items-center gap-1 text-lg">
+              <span>
+                {animal.age} {animal.age > 1 ? "Years" : "Year"} Old
+              </span>
+            </div>
+            <div className="flex items-center gap-[2px] text-lg">
+              <span>{animal.weight} KG</span>
+            </div>
           </div>
-        </div>
-        <div className="flex items-center justify-between text-gray-600">
-          <div className="flex items-center gap-1 text-lg">
-            <span>
-              {animal.age} {animal.age > 1 ? "Years" : "Year"} Old
-            </span>
-          </div>
-          <div className="flex items-center gap-[2px] text-lg">
-            <span>{animal.weight} KG</span>
-          </div>
-        </div>
 
-        <div>
-          <Link href={`/animals/${animal.id}`} className="btn w-full">
-            View Details
-          </Link>
+          <div>
+            <Link href={`/animals/${animal.id}`} className="btn w-full">
+              View Details
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 

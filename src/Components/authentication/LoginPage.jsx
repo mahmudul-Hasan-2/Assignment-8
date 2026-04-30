@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const {
@@ -24,6 +25,7 @@ const LoginPage = () => {
       callbackURL: "/", // optional
     });
     if (res) {
+      toast("Login successful!");
       redirect("/");
     }
   };
