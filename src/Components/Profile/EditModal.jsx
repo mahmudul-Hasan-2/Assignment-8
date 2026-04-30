@@ -1,18 +1,32 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { useSpring, animated } from "@react-spring/web";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const EditModal = () => {
+  const router = useRouter();
   const style = useSpring({
     from: { opacity: 0, transform: "scale(0.9)" },
     to: { opacity: 1, transform: "scale(1)" },
   });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const handleUpdateProfile = async (data) => {
-    await authClient.updateUser({
+    const { data: res, error } = await authClient.updateUser({
       image: data.photoUrl,
       name: data.name,
-      email: data.email,
     });
+    if (res) {
+      toast.success("Updated Successfully");
+      router.push("/");
+    }
   };
   return (
     <div className="w-full">
@@ -31,24 +45,23 @@ const EditModal = () => {
               ✕
             </button>
           </form>
-          <animated.div className="my-10 space-y-5" style={style}>
-            <h2 className="text-2xl text-center font-bold ">
-              Login Your Account
-            </h2>
+          <animated.div className="my-10 space-y-5 text-start" style={style}>
+            <h2 className="text-2xl text-center font-bold ">Update Account</h2>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
               <div className="card-body">
                 <form onSubmit={handleSubmit(handleUpdateProfile)}>
                   <fieldset className="fieldset">
-                    <label className="label">Email</label>
+                    <label className="label">Name</label>
                     <input
-                      type="email"
                       className="input w-full"
-                      placeholder="Email"
-                      {...register("email", { required: "Email is required" })}
+                      placeholder="Name"
+                      {...register("name", {
+                        required: "Name is required",
+                      })}
                     />
-                    {errors.email && (
+                    {errors.name && (
                       <p className="text-red-500 text-sm mt-1">
-                        {errors.email.message}
+                        {errors.name.message}
                       </p>
                     )}
                     <label className="label">Photo Url</label>
@@ -65,21 +78,12 @@ const EditModal = () => {
                         {errors.photoUrl.message}
                       </p>
                     )}
-                    <label className="label">Email</label>
-                    <input
-                      className="input w-full"
-                      placeholder="Email"
-                      {...register("email", {
-                        required: "Email is required",
-                      })}
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.email.message}
-                      </p>
-                    )}
 
-                    <button className="btn btn-neutral mt-4" type="submit">
+                    <button
+                      className="btn btn-neutral mt-4"
+                      type="submit"
+                      onClick={(e) => e.preventDefault()}
+                    >
                       Update Profile
                     </button>
                   </fieldset>

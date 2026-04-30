@@ -19,8 +19,8 @@ const ProfilePage = () => {
             <div className="avatar">
               <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow-2xl">
                 <Image
-                  src={user.image}
-                  alt={user.name}
+                  src={user?.image}
+                  alt={user?.name}
                   width={400}
                   height={200}
                   className="w-full"
@@ -30,14 +30,14 @@ const ProfilePage = () => {
 
             <div className="mt-4">
               <h2 className="card-title text-3xl font-bold text-gray-800">
-                {user.name}
+                {user?.name}
               </h2>
-              <p className="text-gray-500 font-medium">{user.email}</p>
+              <p className="text-gray-500 font-medium">{user?.email}</p>
             </div>
 
             <div className="divider w-full"></div>
 
-            <div className="card-actions w-full">
+            <div className="card-actions w-full flex flex-col gap-2">
               <EditModal></EditModal>
             </div>
           </div>

@@ -10,17 +10,14 @@ const AnimalDetails = async ({ params }) => {
 
   return (
     <div className="max-w-5xl mx-auto my-10">
-      <div className="card bg-base-100 shadow-lg  relative lg:flex-row flex-col">
+      <div className="card bg-base-100 shadow-lg  lg:flex-row flex-col">
         <figure>
-          <span className="badge badge-primary absolute top-0 left-1 lg:-left-5 ">
-            {animal.category}
-          </span>
           <Image
             src={animal.image}
             alt="Shoes"
             width={300}
             height={200}
-            className="w-full h-96"
+            className="w-full h-96 p-5"
           />
         </figure>
         <div className="card-body">
@@ -30,6 +27,7 @@ const AnimalDetails = async ({ params }) => {
           </div>
           <h2 className="card-title text-2xl font-bold">{animal.name}</h2>
           <p>{animal.description}</p>
+          <span className="badge badge-primary ">{animal.category}</span>
           <div className="flex items-center justify-between text-gray-600 text-lg">
             <span>{animal.age} years old</span>
             <span>৳{animal.price}</span>
