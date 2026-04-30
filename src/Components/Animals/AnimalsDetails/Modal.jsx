@@ -1,41 +1,35 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React from "react";
-import { BsPlus } from "react-icons/bs";
+import { toast } from "react-toastify";
 
 const Modal = () => {
+  const router = useRouter();
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    toast.success("Booking confirmed!");
+    router.push("/animals");
+  };
   return (
     <div>
       <button
         className="btn w-full"
         onClick={() => document.getElementById("my_modal_5").showModal()}
       >
-        open modal
+        Book Now
       </button>
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
-          <div className="relative card w-full max-w-lg bg-base-100 shadow-2xl border border-base-300">
-            <button
-              type="button"
-              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
+          <div className="relative card w-full max-w-lg  px-0">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                ✕
+              </button>
+            </form>
 
-            <form className="card-body">
+            <form className="card-body" onSubmit={handleOnSubmit}>
               <div className="flex flex-col items-center mb-6">
                 <h2 className="text-3xl font-bold text-primary">Book Now</h2>
               </div>
@@ -78,6 +72,8 @@ const Modal = () => {
                   placeholder="01XXXXXXXXX"
                   className="input input-bordered w-full focus:input-primary"
                   required
+                  maxLength={11}
+                  minLength={11}
                 />
               </div>
 
@@ -85,10 +81,11 @@ const Modal = () => {
                 <label className="label">
                   <span className="label-text font-semibold">Address</span>
                 </label>
+                <br />
                 <textarea
                   name="userAddress"
                   placeholder="Enter your present address"
-                  className="textarea textarea-bordered h-20 focus:textarea-primary"
+                  className="w-full textarea textarea-bordered h-20 resize-none focus:textarea-primary"
                   required
                 ></textarea>
               </div>
@@ -102,7 +99,7 @@ const Modal = () => {
                 <textarea
                   name="additionalInfo"
                   placeholder="Enter any other details here..."
-                  className="textarea textarea-bordered h-32 focus:textarea-primary"
+                  className="w-full textarea textarea-bordered h-32 resize-none focus:textarea-primary"
                 ></textarea>
               </div>
 

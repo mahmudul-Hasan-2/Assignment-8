@@ -1,7 +1,8 @@
 "use client";
 
-import { authClient } from "@/lib/auth-client";
-import Link from "next/link";
+import { authClient, useSession } from "@/lib/auth-client";
+import { useSpring, animated } from "@react-spring/web";
+
 import { redirect } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -16,6 +17,11 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm();
 
+  const style = useSpring({
+    from: { opacity: 0, transform: "scale(0.9)" },
+    to: { opacity: 1, transform: "scale(1)" },
+  });
+
   const [isActive, setIsActive] = React.useState(false);
 
   const handleRegister = async (data) => {
@@ -27,9 +33,12 @@ const RegisterPage = () => {
       callbackURL: "/login", // optional
     });
     console.log(res, error);
+    const { user } = res;
     if (res) {
-      toast("Registration successful!");
+      toast.success(`Registration successful, Dear! ${user.name}`);
       redirect("/login");
+    } else {
+      toast.error("Registration failed. Please try again.");
     }
   };
 
@@ -39,7 +48,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="my-10 space-y-5">
+    <animated.div className="my-10 space-y-5" style={style}>
       <h2 className="text-2xl text-center font-bold ">Register Your Account</h2>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
         <div className="card-body">
@@ -138,7 +147,7 @@ const RegisterPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 

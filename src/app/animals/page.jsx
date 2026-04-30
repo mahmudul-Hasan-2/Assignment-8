@@ -4,7 +4,6 @@ import React from "react";
 
 const Animals = async () => {
   const animals = await getAnimals();
-  //   console.log(animals);
   return (
     <div className="container mx-auto my-10 space-y-10">
       <h2 className="text-4xl font-bold text-black sm:px-0 px-2">

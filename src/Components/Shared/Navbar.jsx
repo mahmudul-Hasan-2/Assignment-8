@@ -22,6 +22,7 @@ const Navbar = () => {
   );
   const { data } = useSession();
   const user = data?.user;
+  console.log(user);
   return (
     <div className="bg-base-100 shadow-sm">
       <div className="navbar container mx-auto">
@@ -76,13 +77,15 @@ const Navbar = () => {
         </div>
         {user ? (
           <div className="navbar-end gap-2">
-            <Image
-              src={user.photoUrl}
-              alt="User Photo"
-              width={40}
-              height={40}
-              className="w-10 h-10 rounded-full"
-            />
+            <Link href={"/profile"}>
+              <Image
+                src={user.image}
+                alt="User Photo"
+                width={40}
+                height={40}
+                className="w-25 h-13 rounded object-contain"
+              />
+            </Link>
             <button
               onClick={() => signOut()}
               className="btn btn-outline btn-primary"

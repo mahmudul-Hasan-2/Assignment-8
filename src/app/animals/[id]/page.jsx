@@ -10,9 +10,9 @@ const AnimalDetails = async ({ params }) => {
 
   return (
     <div className="max-w-5xl mx-auto my-10">
-      <div className="card bg-base-100 shadow-lg relative">
+      <div className="card bg-base-100 shadow-lg  relative lg:flex-row flex-col">
         <figure>
-          <span className="badge badge-primary absolute top-1 -left-5 ">
+          <span className="badge badge-primary absolute top-0 left-1 lg:-left-5 ">
             {animal.category}
           </span>
           <Image

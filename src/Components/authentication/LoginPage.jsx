@@ -2,6 +2,7 @@
 
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { useSpring, animated } from "@react-spring/web";
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -16,7 +17,10 @@ const LoginPage = () => {
   } = useForm();
 
   const [isActive, setIsActive] = useState(false);
-
+  const style = useSpring({
+    from: { opacity: 0, transform: "scale(0.9)" },
+    to: { opacity: 1, transform: "scale(1)" },
+  });
   const handleLogin = async (data) => {
     const { data: res, error } = await authClient.signIn.email({
       email: data.email, // required
@@ -24,9 +28,12 @@ const LoginPage = () => {
       rememberMe: true,
       callbackURL: "/", // optional
     });
+    const { user } = res;
     if (res) {
-      toast("Login successful!");
+      toast.success(`Login successful, Dear ${user.name}!`);
       redirect("/");
+    } else {
+      toast.error("Login failed. Please check your credentials and try again.");
     }
   };
 
@@ -43,7 +50,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="my-10 space-y-5">
+    <animated.div className="my-10 space-y-5" style={style}>
       <h2 className="text-2xl text-center font-bold ">Login Your Account</h2>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
         <div className="card-body">
@@ -130,7 +137,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 
