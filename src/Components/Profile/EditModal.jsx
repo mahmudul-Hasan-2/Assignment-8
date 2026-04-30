@@ -25,7 +25,11 @@ const EditModal = () => {
     });
     if (res) {
       toast.success("Updated Successfully");
-      router.push("/");
+      router.push("/profile");
+
+      setTimeout(() => {
+        router.refresh();
+      }, 1);
     }
   };
   return (
@@ -79,11 +83,7 @@ const EditModal = () => {
                       </p>
                     )}
 
-                    <button
-                      className="btn btn-neutral mt-4"
-                      type="submit"
-                      onClick={(e) => e.preventDefault()}
-                    >
+                    <button className="btn btn-neutral mt-4" type="submit">
                       Update Profile
                     </button>
                   </fieldset>
