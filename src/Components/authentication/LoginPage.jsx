@@ -28,13 +28,14 @@ const LoginPage = () => {
       rememberMe: true,
       callbackURL: "/", // optional
     });
-    const { user } = res;
+    // const { user } = res;
     if (res) {
       toast.success(`Login successful, Dear ${user.name}!`);
       redirect("/");
     } else {
       toast.error("Login failed. Please check your credentials and try again.");
     }
+    console.log(res);
   };
 
   const handleGoogleSignIn = async () => {
@@ -97,6 +98,7 @@ const LoginPage = () => {
               </div>
 
               <button className="btn btn-neutral mt-4">Login</button>
+
               <div className="divider">OR</div>
             </fieldset>
           </form>

@@ -24,10 +24,10 @@ const EditModal = () => {
       name: data.name,
     });
     if (res) {
+      document.getElementById("my_modal_3").close();
+
       await authClient.getSession({ force: true });
       toast.success("Updated Successfully");
-
-      document.getElementById("my_modal_3").close();
     }
   };
   return (

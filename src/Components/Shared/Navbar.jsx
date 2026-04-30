@@ -77,13 +77,16 @@ const Navbar = () => {
         </div>
         {user ? (
           <div className="navbar-end gap-2">
-            <Link href={"/profile"}>
+            <Link
+              href={"/profile"}
+              className="inline-block w-12 h-12 overflow-hidden rounded-full border-2 border-primary bg-base-100 p-0.5 shadow-sm hover:shadow-md transition-shadow"
+            >
               <Image
                 src={user.image}
                 alt="User Photo"
-                width={40}
-                height={40}
-                className="w-25 h-13 rounded object-contain"
+                width={48}
+                height={48}
+                className="h-full w-full rounded-full object-cover"
               />
             </Link>
             <button
