@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import NavLink from "./NavLink";
+import { signOut, useSession } from "@/lib/auth-client";
 
 const Navbar = () => {
   const links = [
@@ -17,6 +20,8 @@ const Navbar = () => {
       </Link>
     </>
   );
+  const { data } = useSession();
+  const user = data?.user;
   return (
     <div className="bg-base-100 shadow-sm">
       <div className="navbar container mx-auto">
@@ -69,7 +74,25 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <div className="navbar-end gap-2 ">{socialButton}</div>
+        {user ? (
+          <div className="navbar-end gap-2">
+            <Image
+              src={user.photoUrl}
+              alt="User Photo"
+              width={40}
+              height={40}
+              className="w-10 h-10 rounded-full"
+            />
+            <button
+              onClick={() => signOut()}
+              className="btn btn-outline btn-primary"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="navbar-end gap-2 ">{socialButton}</div>
+        )}
       </div>
     </div>
   );

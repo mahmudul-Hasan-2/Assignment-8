@@ -1,11 +1,13 @@
-import React from 'react';
+"use client";
+import React from "react";
+import LoginPage from "@/Components/authentication/LoginPage";
 
-const LoginPage = () => {
-    return (
-        <div>
-            Login
-        </div>
-    );
+const Login = () => {
+  return (
+    <div>
+      <LoginPage></LoginPage>
+    </div>
+  );
 };
 
-export default LoginPage;
+export default Login;
