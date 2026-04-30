@@ -109,7 +109,7 @@ const RegisterPage = () => {
                 {isActive ? <BsEyeSlash /> : <BsEye />}
               </button>
 
-              <button className="btn btn-neutral mt-4">Register</button>
+              <button type="submit" className="btn btn-neutral mt-4">Register</button>
               <div className="divider">OR</div>
             </fieldset>
           </form>

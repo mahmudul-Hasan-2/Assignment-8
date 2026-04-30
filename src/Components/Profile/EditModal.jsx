@@ -24,12 +24,10 @@ const EditModal = () => {
       name: data.name,
     });
     if (res) {
+      await authClient.getSession({ force: true });
       toast.success("Updated Successfully");
-      router.push("/profile");
 
-      setTimeout(() => {
-        router.refresh();
-      }, 1);
+      document.getElementById("my_modal_3").close();
     }
   };
   return (
