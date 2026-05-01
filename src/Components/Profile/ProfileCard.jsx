@@ -37,6 +37,7 @@ const ProfileCard = () => {
 
             <div className="divider w-full"></div>
 
+
             <div className="card-actions w-full flex flex-col gap-2">
               <EditModal></EditModal>
             </div>
