@@ -106,7 +106,7 @@ const Navbar = () => {
                 className="inline-block w-10 h-10 overflow-hidden rounded-full border-2 border-primary bg-base-100 p-0.5 shadow-sm hover:scale-105 transition-transform"
               >
                 <Image
-                  src={user.image || "/user.png"}
+                  src={user.image || "/avatar.svg"}
                   alt="User Photo"
                   width={40}
                   height={40}
