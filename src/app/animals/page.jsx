@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 
 const Animals = () => {
   const [animals, setAnimals] = useState([]);
-  const [filteredAnimals, setFilteredAnimals] = useState([]);
+  const [filteredAnimals, setFilteredAnimals] = useState(animals);
 
   useEffect(() => {
     const gettingData = async () => {
@@ -16,11 +16,11 @@ const Animals = () => {
     };
     gettingData();
   }, []);
-  console.log(animals);
+  console.log(filteredAnimals);
 
   return (
     <div className="container mx-auto my-10 space-y-10">
-      <div className="flex items-center justify-between gap-2 flex-wrap px-2">
+      <div className="flex items-center justify-between gap-2 flex-wrap">
         <h2 className="text-xl sm:text-4xl font-bold text-black sm:px-0 px-2">
           All Animals
         </h2>

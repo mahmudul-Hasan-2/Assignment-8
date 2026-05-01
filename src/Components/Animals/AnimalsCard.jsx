@@ -20,7 +20,7 @@ const AnimalsCard = ({ animal }) => {
             alt={animal.name}
             width={300}
             height={500}
-            className="w-full h-70 p-2"
+            className="w-full h-70 "
           />
         </figure>
         <div className="card-body ">

@@ -1,6 +1,6 @@
 "use client";
 
-import { authClient } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 import Link from "next/link";
 import { useSpring, animated } from "@react-spring/web";
 import { redirect } from "next/navigation";
@@ -21,7 +21,8 @@ const LoginPage = () => {
     from: { opacity: 0, transform: "scale(0.9)" },
     to: { opacity: 1, transform: "scale(1)" },
   });
-  const handleLogin = async (data) => {
+  const handleLogin = async (data, e) => {
+    e.preventDefault();
     const { data: res, error } = await authClient.signIn.email({
       email: data.email, // required
       password: data.password, // required
@@ -38,8 +39,9 @@ const LoginPage = () => {
     console.log(res, error);
   };
 
-  const handleGoogleSignIn = async () => {
-    const data = await authClient.signIn.social({
+  const handleGoogleSignIn = async (e) => {
+    e.preventDefault();
+    await authClient.signIn.social({
       provider: "google",
     });
   };

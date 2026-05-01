@@ -36,7 +36,7 @@ const RegisterPage = () => {
     console.log(res, error);
     const user = res?.user;
     if (res) {
-      toast.success(`Registration successful, Dear! ${user.name}`);
+      toast.success(`Registration successful`);
       redirect("/login");
     } else {
       toast.error(`${error.message}`);
@@ -48,6 +48,7 @@ const RegisterPage = () => {
     const data = await authClient.signIn.social({
       provider: "google",
     });
+    toast.success("Loading..");
     console.log(data);
   };
 
