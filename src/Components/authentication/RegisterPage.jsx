@@ -2,6 +2,7 @@
 
 import { authClient, useSession } from "@/lib/auth-client";
 import { useSpring, animated } from "@react-spring/web";
+import Link from "next/link";
 
 import { redirect } from "next/navigation";
 import React from "react";
@@ -33,13 +34,21 @@ const RegisterPage = () => {
       callbackURL: "/login", // optional
     });
     console.log(res, error);
-    const { user } = res;
+    const user = res?.user;
     if (res) {
       toast.success(`Registration successful, Dear! ${user.name}`);
       redirect("/login");
     } else {
-      toast.error("Registration failed. Please try again.");
+      toast.error(`${error.message}`);
     }
+  };
+
+  const handleGoogleSignUp = async (e) => {
+    e.preventDefault();
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+    console.log(data);
   };
 
   const handleShowHide = (e) => {
@@ -108,6 +117,14 @@ const RegisterPage = () => {
               >
                 {isActive ? <BsEyeSlash /> : <BsEye />}
               </button>
+              <div className="mt-3">
+                <h2 className="flex items-center justify-between">
+                  Already have an account?{" "}
+                  <Link className="link link-primary" href="/register">
+                    Login
+                  </Link>
+                </h2>
+              </div>
 
               <button type="submit" className="btn btn-neutral mt-4">
                 Register
@@ -116,7 +133,10 @@ const RegisterPage = () => {
             </fieldset>
           </form>
           <div>
-            <button className="w-full btn bg-white text-black border-[#e5e5e5]">
+            <button
+              className="w-full btn bg-white text-black border-[#e5e5e5]"
+              onClick={handleGoogleSignUp}
+            >
               <svg
                 aria-label="Google logo"
                 width="16"
@@ -144,7 +164,7 @@ const RegisterPage = () => {
                   ></path>
                 </g>
               </svg>
-              Login with Google
+              Register with Google
             </button>
           </div>
         </div>

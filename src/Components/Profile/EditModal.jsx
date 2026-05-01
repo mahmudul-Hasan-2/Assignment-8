@@ -37,7 +37,7 @@ const EditModal = () => {
         className="btn w-full btn-outline btn-error"
         onClick={() => document.getElementById("my_modal_3").showModal()}
       >
-        Edit Profile
+        Update
       </button>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">

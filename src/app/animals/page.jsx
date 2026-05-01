@@ -1,17 +1,37 @@
-import AnimalsCard from "@/Components/Animals/AnimalsCard";
-import { getAnimals } from "@/lib/data";
-import React from "react";
+"use client";
 
-const Animals = async () => {
-  const animals = await getAnimals();
+import AnimalsCard from "@/Components/Animals/AnimalsCard";
+import Sorting from "@/Components/Animals/Sorting";
+import { getAnimals } from "@/lib/data";
+import React, { useEffect, useState } from "react";
+
+const Animals = () => {
+  const [animals, setAnimals] = useState([]);
+  const [filteredAnimals, setFilteredAnimals] = useState([]);
+
+  useEffect(() => {
+    const gettingData = async () => {
+      const animals = await getAnimals();
+      setAnimals(animals);
+    };
+    gettingData();
+  }, []);
+  console.log(animals);
+
   return (
     <div className="container mx-auto my-10 space-y-10">
-      <h2 className="text-4xl font-bold text-black sm:px-0 px-2">
-        All Animals
-      </h2>
+      <div className="flex items-center justify-between gap-2 flex-wrap px-2">
+        <h2 className="text-xl sm:text-4xl font-bold text-black sm:px-0 px-2">
+          All Animals
+        </h2>
+        <Sorting
+          animals={animals}
+          setFilteredAnimals={setFilteredAnimals}
+        ></Sorting>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-2">
-        {animals.map((animal) => (
+        {filteredAnimals.map((animal) => (
           <AnimalsCard key={animal.id} animal={animal} />
         ))}
       </div>

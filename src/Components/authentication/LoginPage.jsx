@@ -33,16 +33,15 @@ const LoginPage = () => {
       toast.success(`Login successful, Dear ${user.name}!`);
       redirect("/");
     } else {
-      toast.error("Login failed. Please check your credentials and try again.");
+      toast.error(`${error.message}`);
     }
-    console.log(res);
+    console.log(res, error);
   };
 
   const handleGoogleSignIn = async () => {
     const data = await authClient.signIn.social({
       provider: "google",
     });
-    console.log(data);
   };
 
   const handleShowHide = (e) => {

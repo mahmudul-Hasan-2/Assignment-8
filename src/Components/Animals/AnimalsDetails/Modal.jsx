@@ -9,6 +9,7 @@ const Modal = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     toast.success("Booking confirmed!");
+    document.getElementById("form").reset();
     router.push("/animals");
   };
   return (
@@ -29,7 +30,7 @@ const Modal = () => {
               </button>
             </form>
 
-            <form className="card-body" onSubmit={handleOnSubmit}>
+            <form className="card-body" id="form" onSubmit={handleOnSubmit}>
               <div className="flex flex-col items-center mb-6">
                 <h2 className="text-3xl font-bold text-primary">Book Now</h2>
               </div>
@@ -87,19 +88,6 @@ const Modal = () => {
                   placeholder="Enter your present address"
                   className="w-full textarea textarea-bordered h-20 resize-none focus:textarea-primary"
                   required
-                ></textarea>
-              </div>
-
-              <div className="form-control w-full mt-2">
-                <label className="label">
-                  <span className="label-text font-semibold">
-                    Additional Information
-                  </span>
-                </label>
-                <textarea
-                  name="additionalInfo"
-                  placeholder="Enter any other details here..."
-                  className="w-full textarea textarea-bordered h-32 resize-none focus:textarea-primary"
                 ></textarea>
               </div>
 

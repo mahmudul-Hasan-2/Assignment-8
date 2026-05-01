@@ -3,6 +3,16 @@ import { getAnimals } from "@/lib/data";
 import Image from "next/image";
 import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
+export const generateMetadata = async ({ params }) => {
+  const { id } = await params;
+  const animals = await getAnimals();
+  const animal = animals.find((a) => a.id == id);
+
+  return {
+    title: animal.name,
+    description: animal.description,
+  };
+};
 const AnimalDetails = async ({ params }) => {
   const { id } = await params;
   const animals = await getAnimals();
