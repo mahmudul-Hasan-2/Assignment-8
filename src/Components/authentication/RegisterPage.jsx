@@ -44,12 +44,9 @@ const RegisterPage = () => {
   };
 
   const handleGoogleSignUp = async (e) => {
-    e.preventDefault();
-    const data = await authClient.signIn.social({
+    await authClient.signIn.social({
       provider: "google",
     });
-    toast.success("Loading..");
-    console.log(data);
   };
 
   const handleShowHide = (e) => {
