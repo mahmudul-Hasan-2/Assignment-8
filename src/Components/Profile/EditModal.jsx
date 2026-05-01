@@ -82,7 +82,7 @@ const EditModal = () => {
                     )}
 
                     <button className="btn btn-neutral mt-4" type="submit">
-                      Update Profile
+                      Update Account
                     </button>
                   </fieldset>
                 </form>
