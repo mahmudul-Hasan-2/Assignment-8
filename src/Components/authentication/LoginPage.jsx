@@ -28,7 +28,7 @@ const LoginPage = () => {
       rememberMe: true,
       callbackURL: "/", // optional
     });
-    // const { user } = res;
+    const user = res?.user;
     if (res) {
       toast.success(`Login successful, Dear ${user.name}!`);
       redirect("/");
