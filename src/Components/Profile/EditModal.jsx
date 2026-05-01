@@ -28,6 +28,7 @@ const EditModal = () => {
 
       await authClient.getSession({ force: true });
       toast.success("Updated Successfully");
+      router.refresh();
     }
   };
   return (
