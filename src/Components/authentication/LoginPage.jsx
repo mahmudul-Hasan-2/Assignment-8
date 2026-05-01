@@ -39,7 +39,7 @@ const LoginPage = () => {
     console.log(res, error);
   };
 
-  const handleGoogleSignIn = async (e) => {
+  const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
       provider: "google",
     });
