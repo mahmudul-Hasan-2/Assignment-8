@@ -33,6 +33,7 @@ const LoginPage = () => {
     if (res) {
       toast.success(`Login successful!`);
       redirect("/");
+      window.location.reload();
     } else {
       toast.error(`${error.message}`);
     }
