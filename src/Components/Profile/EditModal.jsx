@@ -51,8 +51,8 @@ const EditModal = () => {
           </form>
           <animated.div className="my-10 space-y-5 text-start" style={style}>
             <h2 className="text-2xl text-center font-bold ">Update Account</h2>
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
-              <div className="card-body">
+            <div className="card bg-base-10 w-full max-w-full sm:max-w-sm shrink-0 shadow-2xl mx-auto">
+              <div className="card-body px-4">
                 <form id="form" onSubmit={handleSubmit(handleUpdateProfile)}>
                   <fieldset className="fieldset">
                     <label className="label">Name</label>
