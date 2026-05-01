@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import LoginPage from "@/Components/authentication/LoginPage";
 export const metadata = {
@@ -8,9 +7,7 @@ export const metadata = {
 };
 const Login = () => {
   return (
-    <div>
       <LoginPage></LoginPage>
-    </div>
   );
 };
 
