@@ -25,6 +25,7 @@ const EditModal = () => {
     });
     if (res) {
       document.getElementById("my_modal_3").close();
+      document.getElementById("form").reset();
 
       await authClient.getSession({ force: true });
       toast.success("Updated Successfully");
@@ -51,7 +52,7 @@ const EditModal = () => {
             <h2 className="text-2xl text-center font-bold ">Update Account</h2>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
               <div className="card-body">
-                <form onSubmit={handleSubmit(handleUpdateProfile)}>
+                <form id="form" onSubmit={handleSubmit(handleUpdateProfile)}>
                   <fieldset className="fieldset">
                     <label className="label">Name</label>
                     <input
