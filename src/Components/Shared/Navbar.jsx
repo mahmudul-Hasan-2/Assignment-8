@@ -106,10 +106,7 @@ const Navbar = () => {
                 className="inline-block w-10 h-10 overflow-hidden rounded-full border-2 border-primary bg-base-100 p-0.5 shadow-sm hover:scale-105 transition-transform"
               >
                 <Image
-                  src={
-                    user.image ||
-                    "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                  }
+                  src={user.image || "/user.png"}
                   alt="User Photo"
                   width={40}
                   height={40}

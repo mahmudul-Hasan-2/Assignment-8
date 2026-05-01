@@ -69,7 +69,7 @@ const Modal = () => {
                 </label>
                 <input
                   name="userPhone"
-                  type="tel"
+                  type="number"
                   placeholder="01XXXXXXXXX"
                   className="input input-bordered w-full focus:input-primary"
                   required
