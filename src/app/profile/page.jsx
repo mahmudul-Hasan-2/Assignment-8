@@ -7,7 +7,7 @@ export const metaData = {
     "Manage your Qurbani Hat profile to update your contact information, view your shortlisted animals, and track your purchase history. Stay organized and ready for a hassle-free Qurbani booking.",
 };
 
-const page = () => {
+const Profile = () => {
   return (
     <div>
       <ProfileCard></ProfileCard>
@@ -15,4 +15,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Profile;
