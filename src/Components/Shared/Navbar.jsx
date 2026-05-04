@@ -113,8 +113,8 @@ const Navbar = () => {
               }
             >
               <div>
-                <h2 className="text-base font-bold">{user.name}</h2>
-                <p>{user.email}</p>
+                <h2 className="text-base font-bold">{user?.name}</h2>
+                <p>{user?.email}</p>
               </div>
               <Link href={"/profile"} className="btn">
                 My Profile
