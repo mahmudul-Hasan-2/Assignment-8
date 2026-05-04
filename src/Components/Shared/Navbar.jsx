@@ -46,6 +46,7 @@ const Navbar = () => {
                 />
               </svg>
             </div>
+
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow gap-2"
@@ -56,19 +57,7 @@ const Navbar = () => {
                 </li>
               ))}
               {user ? (
-                <div className="flex flex-col justify-start items-center gap-3">
-                  <Link
-                    href={"/profile"}
-                    className="inline-block w-10 h-10 overflow-hidden rounded-full border-2 border-primary bg-base-100 p-0.5 shadow-sm hover:scale-105 transition-transform"
-                  >
-                    <Image
-                      src={user.image || "/avatar.svg"}
-                      alt="User Photo"
-                      width={40}
-                      height={40}
-                      className="h-full w-full rounded-full object-cover"
-                    />
-                  </Link>
+                <div className="">
                   <button
                     onClick={() => signOut()}
                     className="btn btn-sm w-full lg:btn-md btn-outline btn-error"
@@ -99,12 +88,12 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end gap-3">
-          {user ? (
-            <div className="hidden lg:flex items-center gap-3">
-              <Link
-                href={"/profile"}
-                className="inline-block w-10 h-10 overflow-hidden rounded-full border-2 border-primary bg-base-100 p-0.5 shadow-sm hover:scale-105 transition-transform"
-              >
+          <div className="navbar-end lg:hidden">
+            <button
+              popoverTarget="popover-1"
+              style={{ anchorName: "--anchor-1" } /* as React.CSSProperties */}
+            >
+              <div className="inline-block w-10 h-10 overflow-hidden rounded-full border-2 border-primary bg-base-100 p-0.5 shadow-sm hover:scale-105 transition-transform">
                 <Image
                   src={user.image || "/avatar.svg"}
                   alt="User Photo"
@@ -112,7 +101,63 @@ const Navbar = () => {
                   height={40}
                   className="h-full w-full rounded-full object-cover"
                 />
+              </div>
+            </button>
+
+            <ul
+              className="dropdown menu space-y-5 rounded-box bg-base-100 shadow-sm"
+              popover="auto"
+              id="popover-1"
+              style={
+                { positionAnchor: "--anchor-1" } /* as React.CSSProperties */
+              }
+            >
+              <div>
+                <h2 className="text-base font-bold">{user.name}</h2>
+                <p>{user.email}</p>
+              </div>
+              <Link href={"/profile"} className="btn">
+                My Profile
               </Link>
+            </ul>
+          </div>
+          {user ? (
+            <div className="hidden lg:flex items-center gap-3">
+              {/* change popover-1 and --anchor-1 names. Use unique names for each dropdown */}
+              {/* For TSX uncomment the commented types below */}
+              <button
+                popoverTarget="popover-1"
+                style={
+                  { anchorName: "--anchor-1" } /* as React.CSSProperties */
+                }
+              >
+                <div className="inline-block w-10 h-10 overflow-hidden rounded-full border-2 border-primary bg-base-100 p-0.5 shadow-sm hover:scale-105 transition-transform">
+                  <Image
+                    src={user.image || "/avatar.svg"}
+                    alt="User Photo"
+                    width={40}
+                    height={40}
+                    className="h-full w-full rounded-full object-cover"
+                  />
+                </div>
+              </button>
+
+              <ul
+                className="dropdown menu w-52 space-y-5 rounded-box bg-base-100 shadow-sm"
+                popover="auto"
+                id="popover-1"
+                style={
+                  { positionAnchor: "--anchor-1" } /* as React.CSSProperties */
+                }
+              >
+                <div>
+                  <h2 className="text-base font-bold">{user.name}</h2>
+                  <p>{user.email}</p>
+                </div>
+                <Link href={"/profile"} className="btn">
+                  My Profile
+                </Link>
+              </ul>
               <button
                 onClick={() => signOut()}
                 className="btn btn-sm lg:btn-md btn-outline btn-error"

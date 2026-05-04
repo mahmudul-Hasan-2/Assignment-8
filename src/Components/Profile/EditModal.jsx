@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 const EditModal = () => {
-  const router = useRouter();
   const style = useSpring({
     from: { opacity: 0, transform: "scale(0.9)" },
     to: { opacity: 1, transform: "scale(1)" },
