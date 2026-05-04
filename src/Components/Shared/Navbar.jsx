@@ -88,82 +88,80 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end gap-3">
-          <div className="navbar-end lg:hidden">
-            <button
-              popoverTarget="popover-1"
-              style={{ anchorName: "--anchor-1" } /* as React.CSSProperties */}
-            >
-              <div className="inline-block w-10 h-10 overflow-hidden rounded-full border-2 border-primary bg-base-100 p-0.5 shadow-sm hover:scale-105 transition-transform">
-                <Image
-                  src={user?.image || "/avatar.svg"}
-                  alt="User Photo"
-                  width={40}
-                  height={40}
-                  className="h-full w-full rounded-full object-cover"
-                />
-              </div>
-            </button>
-
-            <ul
-              className="dropdown menu space-y-5 rounded-box bg-base-100 shadow-sm"
-              popover="auto"
-              id="popover-1"
-              style={
-                { positionAnchor: "--anchor-1" } /* as React.CSSProperties */
-              }
-            >
-              <div>
-                <h2 className="text-base font-bold">{user?.name}</h2>
-                <p>{user?.email}</p>
-              </div>
-              <Link href={"/profile"} className="btn">
-                My Profile
-              </Link>
-            </ul>
-          </div>
           {user ? (
-            <div className="hidden lg:flex items-center gap-3">
-              {/* change popover-1 and --anchor-1 names. Use unique names for each dropdown */}
-              {/* For TSX uncomment the commented types below */}
-              <button
-                popoverTarget="popover-1"
-                style={
-                  { anchorName: "--anchor-1" } /* as React.CSSProperties */
-                }
-              >
-                <div className="inline-block w-10 h-10 overflow-hidden rounded-full border-2 border-primary bg-base-100 p-0.5 shadow-sm hover:scale-105 transition-transform">
-                  <Image
-                    src={user?.image || "/avatar.svg"}
-                    alt="User Photo"
-                    width={40}
-                    height={40}
-                    className="h-full w-full rounded-full object-cover"
-                  />
+            <div>
+              <div className="dropdown dropdown-end block lg:hidden">
+                <div tabIndex={0} role="button" className="cursor-pointer">
+                  <div className="inline-block w-10 h-10 overflow-hidden rounded-full border-2 border-primary bg-base-100 p-0.5 shadow-sm hover:scale-105 transition-transform">
+                    <Image
+                      src={user?.image || "/avatar.svg"}
+                      alt="User Photo"
+                      width={40}
+                      height={40}
+                      className="h-full w-full rounded-full object-cover"
+                    />
+                  </div>
                 </div>
-              </button>
 
-              <ul
-                className="dropdown menu w-52 space-y-5 rounded-box bg-base-100 shadow-sm"
-                popover="auto"
-                id="popover-1"
-                style={
-                  { positionAnchor: "--anchor-1" } /* as React.CSSProperties */
-                }
-              >
-                <div>
-                  <h2 className="text-base font-bold">{user?.name}</h2>
-                  <p>{user?.email}</p>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100 rounded-box z-[10] w-52 p-4 shadow-xl border border-gray-100 mt-2 space-y-3"
+                >
+                  <div>
+                    <h2 className="text-base font-bold">{user?.name}</h2>
+                    <p className="text-xs opacity-70">{user?.email}</p>
+                  </div>
+                  <div className="divider my-0"></div>{" "}
+                  <li>
+                    <Link
+                      href={"/profile"}
+                      className="btn btn-sm btn-primary text-white"
+                    >
+                      My Profile
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="hidden lg:flex items-center gap-3">
+                <div className="dropdown dropdown-end ">
+                  <div tabIndex={0} role="button" className="cursor-pointer">
+                    <div className="inline-block w-10 h-10 overflow-hidden rounded-full border-2 border-primary bg-base-100 p-0.5 shadow-sm hover:scale-105 transition-transform">
+                      <Image
+                        src={user?.image || "/avatar.svg"}
+                        alt="User Photo"
+                        width={40}
+                        height={40}
+                        className="h-full w-full rounded-full object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu bg-base-100 rounded-box z-[10] w-52 p-4 shadow-xl border border-gray-100 space-y-3"
+                  >
+                    <div>
+                      <h2 className="text-base font-bold">{user?.name}</h2>
+                      <p className="text-xs opacity-70">{user?.email}</p>
+                    </div>
+                    <div className="divider my-0"></div>{" "}
+                    <li>
+                      <Link
+                        href={"/profile"}
+                        className="btn btn-sm btn-primary text-white"
+                      >
+                        My Profile
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
-                <Link href={"/profile"} className="btn">
-                  My Profile
-                </Link>
-              </ul>
-              <button
-                onClick={() => signOut()}
-                className="btn btn-sm lg:btn-md btn-outline btn-error"
-              >
-                Logout
-              </button>
+                <button
+                  onClick={() => signOut()}
+                  className="btn btn-sm lg:btn-md btn-outline btn-error"
+                >
+                  Logout
+                </button>
+              </div>
             </div>
           ) : (
             <div className="hidden lg:flex gap-2">{socialButton}</div>
